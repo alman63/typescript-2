@@ -31,5 +31,7 @@ module.exports = {
         'no-lonely-if': 'off',
         'spaced-comment': 'off',
         'no-param-reassign': 'off',
+        'no-namespace': 'off',
+        'no-shadow': 'off',
     },
 };
