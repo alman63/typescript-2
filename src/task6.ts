@@ -5,16 +5,16 @@
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-type Equals<A, B> = A extends B ? (B extends A ? 'success' : never) : never;
-type Increase<A, ACC extends Array<number> = []> = ACC['length'] extends A
-    ? [...ACC, 0]['length']
-    : Increase<A, [...ACC, 0]>;
+type Equals<A, B> = A extends B ? (B extends A ? "success" : never) : never;
+type Increase<A, ACC extends Array<number> = []> = ACC["length"] extends A
+  ? [...ACC, 0]["length"]
+  : Increase<A, [...ACC, 0]>;
 type Decrease<A, ACC extends Array<number> = []> = [
-    ...ACC,
-    0
-]['length'] extends A
-    ? ACC['length']
-    : Decrease<A, [...ACC, 0]>;
+  ...ACC,
+  0
+]["length"] extends A
+  ? ACC["length"]
+  : Decrease<A, [...ACC, 0]>;
 
 type Add<A, B> = A extends 0 ? B : Add<Decrease<A>, Increase<B>>;
 type Subtract<A, B> = B extends 0 ? A : Subtract<Decrease<A>, Decrease<B>>;
