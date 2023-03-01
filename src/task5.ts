@@ -5,7 +5,7 @@
 type FIXME<T> = T extends (...args: any[]) => infer R ? R : any;
 
 // Hint: infer
-declare module React {
+declare namespace React {
   export type ComponentType<T> = {
     defaultProps: T extends (...args: any[]) => infer R ? R : any;
   };
