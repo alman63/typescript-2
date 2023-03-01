@@ -33,5 +33,6 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-namespace': 'off',
         'no-shadow': 'off',
+        '@typescript-eslint/no-namespace': 'off',
     },
 };
