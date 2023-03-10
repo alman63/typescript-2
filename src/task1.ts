@@ -13,7 +13,8 @@ const orderStates = [
 
 type OrderState = typeof orderStates[number];
 
-type FIXME = [Exclude<OrderState, 'buyingSupplies' | 'producing'>];
+type FIXME = Exclude<OrderState, 'buyingSupplies' | 'producing'>[];
+type FIXME3 = [Exclude<OrderState, 'buyingSupplies' | 'producing'>?];
 type FIXME2 = ['initial' | 'inWork' | 'fullfilled'] | string[];
 
 export const getUserOrderStates = (orderStates: OrderState[]): FIXME => {
