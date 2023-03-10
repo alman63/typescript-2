@@ -4,25 +4,25 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 const orderStates = [
-    'initial',
-    'inWork',
-    'buyingSupplies',
-    'producing',
-    'fullfilled',
+  "initial",
+  "inWork",
+  "buyingSupplies",
+  "producing",
+  "fullfilled",
 ] as const;
 
 type OrderState = typeof orderStates[number];
 
-type FIXME = Exclude<OrderState, 'buyingSupplies' | 'producing'>[];
-type FIXME3 = [Exclude<OrderState, 'buyingSupplies' | 'producing'>?];
-type FIXME2 = ['initial' | 'inWork' | 'fullfilled'] | string[];
+type FIXME = Exclude<OrderState, "buyingSupplies" | "producing">[];
+type FIXME3 = [Exclude<OrderState, "buyingSupplies" | "producing">?];
+type FIXME2 = ["initial" | "inWork" | "fullfilled"] | string[];
 
 export const getUserOrderStates = (orderStates: OrderState[]): FIXME => {
-    const filteredStates = [] as FIXME;
-    orderStates.forEach((element) => {
-        if (element !== 'buyingSupplies' && element !== 'producing') {
-            filteredStates.push(element);
-        }
-    });
-    return filteredStates;
+  const filteredStates = [] as FIXME;
+  orderStates.forEach((element) => {
+    if (element !== "buyingSupplies" && element !== "producing") {
+      filteredStates.push(element);
+    }
+  });
+  return filteredStates;
 };
