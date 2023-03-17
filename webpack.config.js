@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const HandlebarsPlugin = require('handlebars-webpack-plugin');
 
@@ -29,6 +31,10 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({ template: 'index.html' }),
+        new HtmlWebpackPlugin({
+            template: 'index.html',
+        }),
+        new MiniCssExtractPlugin(),
         // new CleanWebpackPlugin(),
         // new webpack.HotModuleReplacementPlugin(),
         // new HandlebarsPlugin({
@@ -44,6 +50,9 @@ module.exports = {
         //     partials: [path.join(process.cwd(), 'partials', '**', '*.hbs')],
         // }),
     ],
+    optimization: {
+        minimizer: [`...`, new CssMinimizerPlugin()],
+    },
     module: {
         rules: [
             {
@@ -52,6 +61,14 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                 },
+            },
+            {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
+            {
+                test: /\.html$/i,
+                loader: 'html-loader',
             },
         ],
     },

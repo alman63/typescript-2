@@ -1,10 +1,45 @@
 import { createData } from './components/createData';
 import { readData } from './components/readData';
-import { deleteData } from './components/deleteData';
+import { findDeleteData } from './components/deleteData';
+import { createCalendar } from './components/getCalendar';
+import { insertData } from './components/createData';
+import { findUpduteData } from './components/updateData';
+import { filterData } from './components/filterData';
+import { createLayout } from './components/createLayuot';
 
-// createData(1, new Date('2022-02-24'), 'done', 'q1', 'title');
-// createData(2, new Date('2023-02-24'), 'inDev', 'q2', 'title2');
-// createData(3, new Date('2024-02-24'), 'inDev', 'q3', 'title3');
-// readData();
-// deleteData(3);
-// document.querySelector('#app') as HTMLElement;
+import './styles.css';
+
+createLayout(document.querySelector('#app') as HTMLElement);
+
+createCalendar(
+    document.querySelector('div.calendar__table') as HTMLElement,
+    new Date().getFullYear(),
+    new Date().getMonth()
+);
+
+findDeleteData();
+findUpduteData();
+// insertData(
+//     1,
+//     `${new Date('2022-02-24').toLocaleDateString()}`,
+//     'done',
+//     'Сходить за хлебом',
+//     'важно'
+// );
+// insertData(
+//     2,
+//     `${new Date('2023-02-24').toLocaleDateString()}`,
+//     'inDev',
+//     'Купить колбасу',
+//     'очень важно'
+// );
+// insertData(
+//     11,
+//     `${new Date('2024-02-24').toLocaleDateString()}`,
+//     'inDev',
+//     'Сделать домашнее задание',
+//     'otus'
+// );
+readData();
+createData();
+filterData();

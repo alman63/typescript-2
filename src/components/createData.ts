@@ -3,10 +3,49 @@
 import { ref, set } from 'firebase/database';
 import { database } from './config';
 
-export function createData(
+export function createData() {
+    const buttonCreate = document.querySelector('button.create') as HTMLElement;
+    buttonCreate.addEventListener('click', () => {
+        const divInput = document.querySelector(
+            'div.Data__input'
+        ) as HTMLElement;
+        divInput.innerHTML =
+            "<label>Номер</label><input id='id' class='id'></input><br><label>Дата</label><input id='date' type='date'><br></input> <label>Статус</label><input id='state'><br></input><label>Описание</label><input id='title'><br></input><label>Теги</label><input id='tag'></input><br><button class='save'>Записать</button><button class='close'>Отменить</button>";
+        const buttonSave = document.querySelector('button.save') as HTMLElement;
+        const buttonClose = document.querySelector(
+            'button.close'
+        ) as HTMLElement;
+        buttonClose.addEventListener('click', () => {
+            divInput.innerHTML = '';
+        });
+        buttonSave.addEventListener('click', () => {
+            insertData(
+                Number(
+                    (document.getElementById('id') as HTMLInputElement).value
+                ),
+                `${new Date(
+                    `${
+                        (document.getElementById('date') as HTMLInputElement)
+                            .value
+                    }`
+                ).toLocaleDateString()}`,
+                `${
+                    (document.getElementById('state') as HTMLInputElement).value
+                }`,
+                `${
+                    (document.getElementById('title') as HTMLInputElement).value
+                }`,
+                `${(document.getElementById('tag') as HTMLInputElement).value}`
+            );
+            alert('запись добавлена в календарь');
+            divInput.innerHTML = '';
+        });
+    });
+}
+export function insertData(
     entriesId: number,
-    data: Date,
-    state: 'done' | 'inDev',
+    data: string,
+    state: string,
     title: string,
     tag: string
 ) {

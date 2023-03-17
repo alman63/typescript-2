@@ -1,3 +1,55 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  height: 100vh;
+}
 body {
   font-family: sans-serif;
+}
+.wrapper {
+  display: flex;
+  gap: 2%;
+  align-items: stretch;
+  justify-content: space-around;
+}
+table {
+  border-collapse: collapse;
+  width: 30%;
+}
+h1 {
+  margin: 15px;
+  text-align: center;
+}
+h2 {
+  margin: 15px;
+}
+td,
+th {
+  border: 1px solid black;
+  padding: 3px;
+  text-align: center;
+}
+
+th {
+  font-weight: bold;
+  background-color: #e6e6e6;
+}
+label {
+  display: block;
+  width: 15%;
+  margin: 5px 5px 5px 20px;
+}
+button {
+  margin-top: 15px;
+  margin-left: 20px;
+  padding: 5px;
+  border-radius: 5px;
+}
+input {
+  margin-left: 20px;
 }
